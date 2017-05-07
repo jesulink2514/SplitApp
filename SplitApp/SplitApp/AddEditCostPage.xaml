@@ -1,18 +1,61 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<TabbedPage xmlns="http://xamarin.com/schemas/2014/forms"
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:design="clr-namespace:SplitApp.ViewModel;assembly=SplitApp"
              x:Class="SplitApp.AddEditCostPage"
-             Title="TabbedPage">
-    <ContentPage Title="Tab 2">
-        <StackLayout>
-            <Label Text="Green"  HorizontalTextAlignment="Center" HorizontalOptions="FillAndExpand" Margin="5" />
-            <BoxView Color="Aqua" VerticalOptions="FillAndExpand" />
-        </StackLayout>
-    </ContentPage>
-    <ContentPage Title="Tab 3">
-        <StackLayout>
-            <Label Text="Blue" HorizontalTextAlignment="Center" HorizontalOptions="FillAndExpand" Margin="5"  />
-            <BoxView Color="Blue" VerticalOptions="FillAndExpand" />
-        </StackLayout>
-    </ContentPage>
-</TabbedPage>
+             Title="SplitFare" BackgroundColor="White"
+             BindingContext="{x:Static design:DesignViewModelLocator.AddEditViewModel}">
+    <Grid ColumnSpacing="0" RowSpacing="10">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="Auto"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        
+        <!--Title-->
+        <Label Grid.Row="0" Text="Add/Edit Cost" Margin="20,10" 
+               Grid.ColumnSpan="2" Style="{StaticResource TitleLabel}"/>
+
+        <!--Description-->
+        <Entry Grid.Row="1" Grid.ColumnSpan="2" Grid.Column="0" Margin="20,0"
+               Placeholder="Enter the description" />
+
+        <!--Amount-->
+        <Entry Grid.Row="2" Grid.ColumnSpan="2" Grid.Column="0" Margin="20,0"
+               Placeholder="Enter the amount"/>
+
+        <!--Accountable for-->
+        <Label Grid.Row="3" Grid.Column="0" Style="{StaticResource TitleLabel}" Margin="20,0,0,0"
+               Text="Select accountable for"/>
+        <Button Grid.Row="3" Grid.Column="1" Text="+" Margin="0,0,20,0" 
+                HeightRequest="30" WidthRequest="30" FontSize="10"
+                Style="{StaticResource PrimaryButton}"/>
+
+        <ListView Grid.Row="4" Grid.ColumnSpan="2" Grid.Column="0" ItemsSource="{Binding Accountables}"
+                  Margin="20,0,20,0">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ImageCell ImageSource="http://en.gravatar.com/userimage/53324156/e73a07295dcdc37414264ef6adaf3bb7.jpeg" 
+                               Text="{Binding DisplayName}"
+                               Detail="jesus.angulo@outlook.com"/>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+        <!--Calculate-->
+        <Button Grid.Row="5" Grid.ColumnSpan="2" Grid.Column="0" Text="Save"
+                Style="{StaticResource PrimaryButton}" Margin="20,0"/>
+
+        <Button Grid.Row="6" Grid.ColumnSpan="2" Grid.Column="0" Text="Delete"
+                Style="{StaticResource SecondaryButton}" Margin="20,0"/>
+
+    </Grid>
+</ContentPage>

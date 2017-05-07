@@ -1,5 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" android:installLocation="auto" package="somostechies.splitapp" android:versionCode="1" android:versionName="0.1.0">
 	<uses-sdk android:minSdkVersion="15" />
-	<application android:label="SplitApp.Android"></application>
+	<uses-permission android:name="android.permission.READ_CONTACTS" />
+	<uses-permission android:name="android.permission.INTERNET" />
+	<application android:label="SplitApp.Android" android:icon="@drawable/icon"></application>
 </manifest>

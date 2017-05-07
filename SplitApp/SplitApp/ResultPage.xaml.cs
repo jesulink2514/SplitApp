@@ -1,9 +1,10 @@
 ﻿using Xamarin.Forms;
+
 namespace SplitApp
 {
-    public partial class AddEditCostPage
+    public partial class ResultPage
     {
-        public AddEditCostPage()
+        public ResultPage()
         {
             InitializeComponent();
         }

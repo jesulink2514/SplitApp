@@ -1,9 +1,9 @@
 ﻿using Xamarin.Forms;
 namespace SplitApp
 {
-    public partial class AddEditCostPage
+    public partial class PickContactPage
     {
-        public AddEditCostPage()
+        public PickContactPage()
         {
             InitializeComponent();
         }
