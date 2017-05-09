@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using SplitApp.ViewModel;
 using Xamarin.Forms;
 
 namespace SplitApp
@@ -12,6 +8,7 @@ namespace SplitApp
         public MainPage()
         {
             InitializeComponent();
+            this.BindingContext = new MainPageViewModel();
         }
     }
 }

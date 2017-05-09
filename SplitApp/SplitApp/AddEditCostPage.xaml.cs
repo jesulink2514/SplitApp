@@ -1,4 +1,5 @@
-﻿using Xamarin.Forms;
+﻿using SplitApp.ViewModel;
+using Xamarin.Forms;
 namespace SplitApp
 {
     public partial class AddEditCostPage
@@ -6,6 +7,7 @@ namespace SplitApp
         public AddEditCostPage()
         {
             InitializeComponent();
+            BindingContext = new AddEditViewModel();
         }
     }
 }

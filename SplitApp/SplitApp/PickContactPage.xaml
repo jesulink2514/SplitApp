@@ -2,15 +2,26 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="SplitApp.PickContactPage" BackgroundColor="White"
-             Title="PickContactPage">
+             Title="Pick a contact">
   <Grid>
       <Grid.RowDefinitions>
           <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-      <SearchBar Placeholder="Search in your contact list"></SearchBar>
-      <ListView Grid.Row="1" Margin="20,0">
-          
+      <SearchBar Placeholder="Search in your contact list"
+                 Text="{Binding SearchCriteria}" 
+                 SearchCommand="{Binding SearchCommand}"></SearchBar>
+        <ListView Grid.Row="1" CachingStrategy="RecycleElement"
+                  IsRefreshing="{Binding IsLoading}" ItemsSource="{Binding Contacts}"
+                  ItemTapped="ListView_OnItemTapped">
+          <ListView.ItemTemplate>
+              <DataTemplate>
+                    <ImageCell Text="{Binding Name}" ImageSource="{Binding ProfileUrl}"
+                               Detail="{Binding Phone}"
+                               TextColor="{StaticResource MainColor}"
+                               DetailColor="{StaticResource TextColor}"/>
+                </DataTemplate>
+          </ListView.ItemTemplate>
       </ListView>
   </Grid>
 </ContentPage>

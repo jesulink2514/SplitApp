@@ -1,10 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:design="clr-namespace:SplitApp.ViewModel;assembly=SplitApp"
              x:Class="SplitApp.AddEditCostPage"
-             Title="SplitFare" BackgroundColor="White"
-             BindingContext="{x:Static design:DesignViewModelLocator.AddEditViewModel}">
+             x:Name="CurrentPage"
+             Title="SplitFare" BackgroundColor="White">
     <Grid ColumnSpacing="0" RowSpacing="10">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
@@ -26,26 +25,35 @@
 
         <!--Description-->
         <Entry Grid.Row="1" Grid.ColumnSpan="2" Grid.Column="0" Margin="20,0"
-               Placeholder="Enter the description" />
+               Placeholder="Enter the description" 
+               Text="{Binding Description}"/>
 
         <!--Amount-->
         <Entry Grid.Row="2" Grid.ColumnSpan="2" Grid.Column="0" Margin="20,0"
-               Placeholder="Enter the amount"/>
+               Placeholder="Enter the amount"
+               Text="{Binding Amount}"/>
 
         <!--Accountable for-->
         <Label Grid.Row="3" Grid.Column="0" Style="{StaticResource TitleLabel}" Margin="20,0,0,0"
                Text="Select accountable for"/>
         <Button Grid.Row="3" Grid.Column="1" Text="+" Margin="0,0,20,0" 
                 HeightRequest="30" WidthRequest="30" FontSize="10"
-                Style="{StaticResource PrimaryButton}"/>
+                Style="{StaticResource PrimaryButton}"
+                Command="{Binding AddOwnerCommand}"/>
 
         <ListView Grid.Row="4" Grid.ColumnSpan="2" Grid.Column="0" ItemsSource="{Binding Accountables}"
                   Margin="20,0,20,0">
             <ListView.ItemTemplate>
                 <DataTemplate>
-                    <ImageCell ImageSource="http://en.gravatar.com/userimage/53324156/e73a07295dcdc37414264ef6adaf3bb7.jpeg" 
-                               Text="{Binding DisplayName}"
-                               Detail="jesus.angulo@outlook.com"/>
+                    <ImageCell ImageSource="DefaultContact.png" 
+                               Text="{Binding Name}"
+                               Detail="{Binding Phone}">
+                        <ImageCell.ContextActions>
+                            <MenuItem IsDestructive="True"
+                                      Text="Delete" 
+                                      BindingContext="{Binding BindingContext.RemoveOwnerCommand,Source={x:Reference CurrentPage}}"/>
+                        </ImageCell.ContextActions>
+                    </ImageCell>
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>

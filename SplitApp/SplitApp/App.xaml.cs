@@ -13,7 +13,11 @@ namespace SplitApp
         {
             InitializeComponent();
 
-            MainPage = new SplitApp.MainPage();
+            MainPage = new NavigationPage(new SplitApp.MainPage())
+            {
+                BarBackgroundColor = Color.FromHex("E42020"),
+                BarTextColor = Color.White
+            };
         }
 
         protected override void OnStart()
