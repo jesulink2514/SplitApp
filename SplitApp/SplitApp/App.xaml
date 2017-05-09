@@ -65,6 +65,39 @@
                 <Setter Property="PlaceholderColor" Value="{StaticResource TextColor}"/>
                 <Setter Property="TextColor" Value="{StaticResource TextColor}"/>
             </Style>
+            
+            <Style x:Key="ResultTitleLabel" TargetType="Label">
+                <Setter Property="FontFamily" Value="{StaticResource RegularFontFamily}"/>
+                <Setter Property="FontSize" Value="{StaticResource HeaderFontSize}"/>
+                <Setter Property="TextColor" Value="{StaticResource MainColor}"/>
+                <Setter Property="FontAttributes" Value="Bold"/>
+            </Style>
+
+            <Style x:Key="ResultAmountLabel" TargetType="Label">
+                <Setter Property="FontFamily" Value="{StaticResource LightFontFamily}"/>
+                <Setter Property="FontSize" Value="{StaticResource BodyFontSize}"/>
+                <Setter Property="TextColor" Value="{StaticResource TextColor}"/>
+            </Style>
+
+            <Style x:Key="CostAmountLabel" TargetType="Label">
+                <Setter Property="FontFamily" Value="{StaticResource MediumFontFamily}"/>
+                <Setter Property="FontSize" Value="{StaticResource HeaderFontSize}"/>
+                <Setter Property="TextColor" Value="{StaticResource SecondaryColor}"/>
+                <Setter Property="FontAttributes" Value="Bold"/>
+            </Style>
+
+            <Style x:Key="CostDescriptionLabel" TargetType="Label">
+                <Setter Property="FontFamily" Value="{StaticResource LightFontFamily}"/>
+                <Setter Property="FontSize" Value="{StaticResource BodyFontSize}"/>
+                <Setter Property="TextColor" Value="{StaticResource TextColor}"/>
+            </Style>
+
+            <Style x:Key="CostOwnersLabel" TargetType="Label">
+                <Setter Property="FontFamily" Value="{StaticResource RegularFontFamily}"/>
+                <Setter Property="FontSize" Value="{StaticResource BodyFontSize}"/>
+                <Setter Property="TextColor" Value="{StaticResource TextColor}"/>
+                <Setter Property="FontAttributes" Value="Bold"/>
+            </Style>
 
         </ResourceDictionary>
     </Application.Resources>

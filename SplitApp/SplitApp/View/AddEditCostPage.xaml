@@ -36,11 +36,11 @@
 
             <!--Accountable for-->
             <Label Grid.Row="3" Grid.Column="0" Style="{StaticResource TitleLabel}" Margin="20,0,0,0"
-               Text="Select accountable for"/>
+               Text="Select accountable for" VerticalOptions="Center"/>
+          
             <Button Grid.Row="3" Grid.Column="1" Text="+" Margin="0,0,20,0" 
-                HeightRequest="30" WidthRequest="30" FontSize="10"
-                Style="{StaticResource PrimaryButton}"
-                Command="{Binding AddOwnerCommand}"/>
+                HeightRequest="50" WidthRequest="50" FontSize="14" BorderRadius="25"
+                Style="{StaticResource PrimaryButton}" Command="{Binding AddOwnerCommand}"/>
 
             <ListView Grid.Row="4" Grid.ColumnSpan="2" Grid.Column="0" ItemsSource="{Binding Cost.Owners}"
                   Margin="20,0,20,0" SeparatorVisibility="None">

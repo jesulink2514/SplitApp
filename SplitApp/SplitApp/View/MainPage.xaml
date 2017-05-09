@@ -26,16 +26,10 @@
                 <DataTemplate>
                     <ViewCell>
                         <StackLayout Padding="20">
-                            <Label Text="{Binding Amount,StringFormat='S/. {0:#.00}'}" 
-                                   FontSize="{StaticResource HeaderFontSize}" 
-                                   FontAttributes="Bold"
-                                   TextColor="{StaticResource SecondaryColor}"
-                                   FontFamily="{StaticResource MediumFontFamily}"/>
-                            <Label Text="{Binding Description}" FontSize="{StaticResource BodyFontSize}"
-                                   FontFamily="{StaticResource LightFontFamily}"/>
-                            <Label Text="{Binding Owners,Converter={StaticResource OwnersTextConverter}}" 
-                                   FontSize="{StaticResource BodyFontSize}" FontAttributes="Bold"
-                                   FontFamily="{StaticResource RegularFontFamily}"/>
+                            <Label Text="{Binding Amount,StringFormat='S/. {0:#.00}'}" Style="{StaticResource CostAmountLabel}"/>
+                            <Label Text="{Binding Description}" Style="{StaticResource CostDescriptionLabel}"/>
+                            <Label Text="{Binding Owners,Converter={StaticResource OwnersTextConverter}}"
+                                   Style="{StaticResource CostOwnersLabel}"/>
                         </StackLayout>
                     </ViewCell>
                 </DataTemplate>
