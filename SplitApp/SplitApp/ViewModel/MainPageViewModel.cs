@@ -9,31 +9,39 @@ using Xamarin.Forms;
 
 namespace SplitApp.ViewModel
 {
-    public class MainPageViewModel: INotifyPropertyChanged
+    public class MainPageViewModel: INotifyPropertyChanged, INavigationEvents
     {
         public ObservableCollection<Cost> Costs { get; set; } = new ObservableCollection<Cost>();
         public ICommand AddCostCommand { get; private set; }
+        public ICommand EditCostCommand { get; private set; }
+        public ICommand CalculateCommand { get; private set; }
         public bool NoHasItems => !Costs.Any();
         public bool HasItems => Costs.Any();
-        public void OnAppering()
-        {
-            if (NavigationService.HasParameter)
-            {
-                var newCost = NavigationService.GetNavigationParameter<Cost>();
-                Costs.Add(newCost);
-                OnPropertyChanged("NoHasItems");
-                OnPropertyChanged("HasItems");
-            }
-        }
 
         public MainPageViewModel()
         {
             this.AddCostCommand = new Command(OnAddCost);
+            this.EditCostCommand = new Command(OnEditCost);
+            this.CalculateCommand = new Command(OnCalculate);
+        }
+
+        private async void OnEditCost(object obj)
+        {
+            var cost = obj as Cost;
+            NavigationService.SetNavigationParameter(cost);
+
+            await Application.Current.MainPage.Navigation.PushAsync(new View.AddEditCostPage());
         }
 
         private async void OnAddCost()
         {
-            await App.Current.MainPage.Navigation.PushAsync(new AddEditCostPage());
+            await Application.Current.MainPage.Navigation.PushAsync(new View.AddEditCostPage());
+        }
+
+        private async void OnCalculate()
+        {
+            NavigationService.SetNavigationParameter(this.Costs);
+            await Application.Current.MainPage.Navigation.PushAsync(new View.ResultPage());
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
@@ -41,6 +49,28 @@ namespace SplitApp.ViewModel
         protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+
+        public void OnAppearing()
+        {
+            if (NavigationService.HasParameter)
+            {
+                var newCost = NavigationService.GetNavigationParameter<EditorParameter<Cost>>();
+                if (newCost.Status == EditorStatus.Deleted)
+                {
+                    Costs.Remove(newCost.Param);
+                }
+                else if(newCost.Status == EditorStatus.New)
+                {
+                    Costs.Add(newCost.Param);
+                }
+                OnPropertyChanged("NoHasItems");
+                OnPropertyChanged("HasItems");
+            }
+        }
+
+        public void OnDisappearing()
+        {
         }
     }
 }

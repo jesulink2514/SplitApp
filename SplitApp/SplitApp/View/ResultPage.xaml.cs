@@ -1,12 +1,13 @@
-﻿using Xamarin.Forms;
+﻿using SplitApp.ViewModel;
 
-namespace SplitApp
+namespace SplitApp.View
 {
     public partial class ResultPage
     {
         public ResultPage()
         {
             InitializeComponent();
+            BindingContext = new ResultPageViewModel();
         }
     }
 }

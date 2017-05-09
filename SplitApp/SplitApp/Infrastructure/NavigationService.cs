@@ -15,5 +15,10 @@
         }
 
         public static bool HasParameter => _navigationParameter != null;
+
+        public static bool Is<T>()
+        {
+            return _navigationParameter is T;
+        }
     }
 }

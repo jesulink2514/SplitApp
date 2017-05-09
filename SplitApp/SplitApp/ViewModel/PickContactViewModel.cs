@@ -1,13 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
-using System.Runtime.CompilerServices;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using Plugin.Contacts;
-using Plugin.Contacts.Abstractions;
+using SplitApp.Infrastructure;
 using SplitApp.Model;
 using Xamarin.Forms;
 
@@ -22,12 +19,11 @@ namespace SplitApp.ViewModel
             SelectContactCommand = new Command(OnSelectContact);
         }
 
-        private void OnSelectContact(object obj)
+        private async void OnSelectContact(object obj)
         {
             var item = obj as Owner;
-
-
-
+            NavigationService.SetNavigationParameter(item);
+            await Application.Current.MainPage.Navigation.PopAsync();
         }
 
         public ICommand SelectContactCommand { get;private set; }

@@ -38,12 +38,14 @@
                 <Setter Property="FontFamily" Value="{StaticResource RegularFontFamily}"/>
                 <Setter Property="FontSize" Value="{StaticResource ButtonFontSize}"/>
                 <Setter Property="BackgroundColor" Value="{StaticResource MainColor}"/>
+                <Setter Property="TextColor" Value="White"></Setter>
             </Style>
 
             <Style x:Key="SecondaryButton" TargetType="Button">
                 <Setter Property="FontFamily" Value="{StaticResource RegularFontFamily}"/>
                 <Setter Property="FontSize" Value="{StaticResource ButtonFontSize}"/>
                 <Setter Property="BackgroundColor" Value="{StaticResource SecondaryColor}"/>
+                <Setter Property="TextColor" Value="White"></Setter>
             </Style>
 
             <Style x:Key="LeadLabel" TargetType="Label">
