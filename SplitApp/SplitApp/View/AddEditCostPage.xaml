@@ -4,8 +4,7 @@
              xmlns:infrastructure="clr-namespace:SplitApp.Infrastructure;assembly=SplitApp"
              x:Class="SplitApp.View.AddEditCostPage"
              x:Name="CurrentPage"
-             Title="SplitFare" BackgroundColor="White">
-    <ScrollView>
+             Title="SplitFare" BackgroundColor="White">    
         <Grid ColumnSpacing="0" RowSpacing="10">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
@@ -44,7 +43,7 @@
                 Command="{Binding AddOwnerCommand}"/>
 
             <ListView Grid.Row="4" Grid.ColumnSpan="2" Grid.Column="0" ItemsSource="{Binding Cost.Owners}"
-                  Margin="20,0,20,0">
+                  Margin="20,0,20,0" HeightRequest="200">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ImageCell ImageSource="DefaultContact.png" 
@@ -66,8 +65,7 @@
                 Style="{StaticResource PrimaryButton}" Margin="20,0"/>
 
             <Button Grid.Row="6" Grid.ColumnSpan="2" Grid.Column="0" Text="Delete" IsVisible="{Binding IsEditing}"
-                Style="{StaticResource SecondaryButton}" Margin="20,0" Command="{Binding DeleteCommand}"/>
+                Style="{StaticResource SecondaryButton}" Margin="20,0,20,20" Command="{Binding DeleteCommand}"/>
 
-        </Grid>
-    </ScrollView>
+        </Grid>    
 </infrastructure:NavigationContentPage>
