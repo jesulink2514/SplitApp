@@ -43,7 +43,7 @@
                 Command="{Binding AddOwnerCommand}"/>
 
             <ListView Grid.Row="4" Grid.ColumnSpan="2" Grid.Column="0" ItemsSource="{Binding Cost.Owners}"
-                  Margin="20,0,20,0" HeightRequest="200">
+                  Margin="20,0,20,0" SeparatorVisibility="None">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ImageCell ImageSource="DefaultContact.png" 
